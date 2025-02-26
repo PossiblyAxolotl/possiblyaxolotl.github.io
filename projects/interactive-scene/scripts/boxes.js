@@ -1,20 +1,33 @@
 let colliders = [];
+let exits     = [];
 
-function resetColliders() {
+// generic box functions
+function resetBoxes() {
   colliders = [];
+  exits     = [];
 }
 
+function drawBoxes() {
+  boxListRect(colliders);
+  boxListRect(exits);
+}
+
+function boxRect(genericBox) {
+  rect(genericBox.x - camera.x, genericBox.y - camera.y, genericBox.w, genericBox.h);
+}
+
+function boxListRect(list) {
+  for (let box of list) {
+    fill(box.col);
+    boxRect(box);
+  }
+}
+
+// Colliders
 function addCollider(x,y,w,h,col) {
   colliders.push ({
     x,y,w,h,col
   });
-}
-
-function drawColliders() {
-  for (let collider of colliders) {
-    fill(collider.col);
-    rect(collider.x - camera.x, collider.y - camera.y, collider.w, collider.h);
-  }
 }
 
 function getColliders() {
@@ -32,4 +45,12 @@ function collide1D(position, velocity, barrier, end = null) {
   }
   
   return velocity;
+}
+
+// Exits
+function addExit(x,y,w,h,leadTo) {
+  exits.push ({
+    x,y,w,h,leadTo,
+    "col":"green"
+  });
 }

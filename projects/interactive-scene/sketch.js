@@ -7,7 +7,7 @@
 // - Storing levels in JSON to be loaded 
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(windowWidth, windowHeight);
   
   // outlines
   strokeCap(ROUND);
@@ -28,17 +28,37 @@ function draw() {
   processCamera();
  
   // drawing
-  drawColliders();
+  drawBoxes();
   drawPlayer();
   
   fill("red");
-  rect(-5,500-camera.y,width+10,height);
+  drawLava();
   
   if (player.y > 650) {
     reloadMap();
   }
 }
 
+// Window settings
 function doubleClicked() {
-  fullscreen(true);
+  fullscreen(!fullscreen());
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+/// MOVE THIS
+function drawLava() {
+  beginShape();
+  let betweenSize = width / 16;
+
+  for (let i = 0; i<betweenSize; i++) {
+    vertex(i * betweenSize, 500-camera.y + 8*Math.sin((millis() + i*120) / 160));
+  }
+
+  vertex(width, height);
+  vertex(0, height);
+
+  endShape();
 }
