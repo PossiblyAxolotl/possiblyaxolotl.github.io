@@ -1,5 +1,9 @@
 let colliders = [];
 
+function resetColliders() {
+  colliders = [];
+}
+
 function addCollider(x,y,w,h,col) {
   colliders.push ({
     x,y,w,h,col
@@ -18,10 +22,13 @@ function getColliders() {
 }
 
 function collide1D(position, velocity, barrier, end = null) {
+  // before -> after
   if (velocity > 0 && position <= barrier) {
-    return (position + velocity > barrier) ? barrier - position : velocity;
-  } else if (end !== null && velocity < 0 && position >= end) {
-    return (position + velocity < end) ? end - position : velocity; 
+    return position + velocity > barrier ? barrier - position : velocity;
+  } 
+  // after -> before
+  else if (end !== null && velocity < 0 && position >= end) {
+    return position + velocity < end ? end - position : velocity; 
   }
   
   return velocity;

@@ -1,12 +1,13 @@
 {
     "platforms" : [
-      {"x":10,"y":350,"w":200,"h":20,"solid":true},
-      {"x":100,"y":300,"w":100,"h":20,"solid":true},
-      {"x":400,"y":280,"w":300,"h":20,"solid":true},
-      {"x":10,"y":100,"w":100,"h":20,"solid":true}
+      {"x":10,"y":350,"w":200,"h":20,"solid":true,"col":"red"},
+      {"x":100,"y":300,"w":100,"h":20,"solid":true,"col":"blue"},
+      {"x":400,"y":280,"w":300,"h":20,"solid":true,"col":"green"},
+      {"x":10,"y":100,"w":100,"h":20,"solid":true,"col":"yellow"}
     ],
     "player" : {
       "x":10,
       "y":20
-    }
+    },
+    "leadTo" : "levels/2.json"
 }
