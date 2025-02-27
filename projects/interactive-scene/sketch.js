@@ -24,16 +24,19 @@ function draw() {
   changePlayerVelocity();
   collidePlayer();
   movePlayer();
-    
+  
   processCamera();
  
+  // misc. updating
+  updateBoxes();
+
   // drawing
   drawBoxes();
   drawPlayer();
   
-  fill("red");
   drawLava();
   
+  // death plane
   if (player.y > 650) {
     reloadMap();
   }
@@ -46,19 +49,4 @@ function doubleClicked() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-}
-
-/// MOVE THIS
-function drawLava() {
-  beginShape();
-  let betweenSize = width / 16;
-
-  for (let i = 0; i<betweenSize; i++) {
-    vertex(i * betweenSize, 500-camera.y + 8*Math.sin((millis() + i*120) / 160));
-  }
-
-  vertex(width, height);
-  vertex(0, height);
-
-  endShape();
 }

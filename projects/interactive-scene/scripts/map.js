@@ -1,13 +1,15 @@
 let currentData;
 
-function createMap(data) {
+function createMap(data, ignoreCamera = false) {
   currentData = data; // save data for reloading level
 
   // player data
   player.x = data.player.x;
   player.y = data.player.y;
   
-  camera.y = player.y - height / 2;
+  if (!ignoreCamera) {
+    camera.y = player.y - height / 2;
+  }
   
   // clear boxes and create new ones
   resetBoxes();
@@ -24,5 +26,5 @@ function loadMap(path) {
 }
 
 function reloadMap() {
-  createMap(currentData);
+  createMap(currentData, true);
 }
