@@ -6,6 +6,13 @@ function createMap(data, ignoreCamera = false) {
   // player data
   player.x = data.player.x;
   player.y = data.player.y;
+
+  player.vx = 0;
+  player.vy = 0;
+
+  player.canJump = false;
+
+  lavaHeight = 500;
   
   if (!ignoreCamera) {
     camera.y = player.y - height / 2;

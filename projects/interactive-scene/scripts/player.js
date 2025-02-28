@@ -57,6 +57,6 @@ function collidePlayer() {
 }
 
 function drawPlayer() {
-  fill("red");
+  fill("#ff0546");
   rect(player.x - camera.x, player.y - camera.y, player.w, player.h);
 }

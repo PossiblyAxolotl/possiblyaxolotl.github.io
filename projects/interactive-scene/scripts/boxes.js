@@ -55,7 +55,7 @@ function collide1D(position, velocity, barrier, end = null) {
 function addExit(x,y,w,h,leadTo) {
   exits.push ({
     x,y,w,h,leadTo,
-    "col":"green"
+    "col":"#0ce6f2"
   });
 }
 

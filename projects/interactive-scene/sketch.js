@@ -2,9 +2,13 @@
 // PossiblyAxolotl
 // March 4, 2025
 //
+// Palette from Lospec: https://lospec.com/palette-list/molten + https://lospec.com/palette-list/ink-crimson
+//
 // Extra for Experts:
 // - Using multiple scripts to separate code
 // - Storing levels in JSON to be loaded 
+
+let lavaHeight = 500;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -14,11 +18,15 @@ function setup() {
   strokeJoin(ROUND);
   strokeWeight(4);
 
+  makeStars();
+
   loadMap("./levels/1.json");
 }
 
 function draw() {
-  background(220);
+  background("#382d43");
+
+  drawBackdrop();
   
   // player movement
   changePlayerVelocity();
@@ -30,16 +38,24 @@ function draw() {
   // misc. updating
   updateBoxes();
 
+  killPlane();
+
+  stroke("#201727");
+
   // drawing
   drawBoxes();
   drawPlayer();
   
   drawLava();
-  
-  // death plane
-  if (player.y > 650) {
+}
+
+// misc functions
+function killPlane() {
+  if (player.y > lavaHeight + 20) {
     reloadMap();
   }
+
+  lavaHeight -= deltaTime * 0.01;
 }
 
 // Window settings
@@ -49,4 +65,7 @@ function doubleClicked() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+
+  stars = [];
+  makeStars();
 }
