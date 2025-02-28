@@ -1,4 +1,5 @@
-[GitHub](https://github.com/PossiblyAxolotl/PossiblyAxolotl.github.io)
+[GitHub](https://github.com/PossiblyAxolotl/PossiblyAxolotl.github.io)[My site](https://PossiblyAxolotl.com)
+
 ---
 # CS30 Demos
 * [Colour Swap Timer](/demos/colour-time-swap)
