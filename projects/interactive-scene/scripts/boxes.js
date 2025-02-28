@@ -13,7 +13,8 @@ function updateBoxes() {
 
 function drawBoxes() {
   boxListRect(colliders);
-  boxListRect(exits);
+  //boxListRect(exits);
+  pulseCircle(exits[0].x, exits[0].y);
 }
 
 function boxRect(genericBox) {

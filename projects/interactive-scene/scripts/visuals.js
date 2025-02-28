@@ -3,6 +3,8 @@ let stars = [];
 const lavaSplits = 16;
 const lavaBetweenSize = width / lavaSplits;
 
+
+// lava
 function drawLava() {
   fill("#fd724e");
   beginShape();
@@ -32,6 +34,7 @@ function drawLava() {
   endShape();
 }
 
+// stars
 function makeStars() {
   for (let i = 0; i<64; i++) {
     stars.push({
@@ -67,4 +70,22 @@ function drawBackdrop() {
 
     circle(star.x - camera.x, star.y - camera.y, star.diameter);
   }
+}
+function degrees_to_radians(degrees)
+{
+  // Store the value of pi.
+  let pi = Math.PI;
+  // Multiply degrees by pi divided by 180 to convert to radians.
+  return degrees * (pi/180);
+}
+// exit
+function pulseCircle(x, y) {
+  fill("red");
+  beginShape();
+
+  for (let i = 0; i<16; i++) {
+    vertex(x + Math.sin(degrees_to_radians(i * 22.5)) * (30 + Math.cos(millis()/30)*3) - camera.x, y - Math.cos(degrees_to_radians(i * 22.5)) * (30 + Math.sin(millis()/30)*3) - camera.y);
+  }
+
+  endShape();
 }
